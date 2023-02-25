@@ -13,6 +13,11 @@ jobs:
         id: check-linked-issues
         with:
           exclude-branches: "release/**, dependabot/**"
+          custom-body-comment: |-
+            関連するissueが見つかりませんでした。プルリクエストのマージ時にissueが自動クローズされるように、[キーワードを用いたissueのリンク機能](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)をご利用ください。たとえば、issue 123をクローズするプルリクエストの場合「`Close #123`」をプルリクエストの説明文に追加します。
+
+            > **Warning** 
+            > 本プロジェクトでは、[issueドリブン](#)を通常のプロセスとしています。プルリクエストがissueに先行して作られた場合、マージされない恐れがございますので予めご了承下さい。
       # OPTIONAL: Use the output from the `check-linked-issues` step
       - name: Get the output
         run: echo "How many linked issues? ${{ steps.check-linked-issues.outputs.linked_issues_count }}"
